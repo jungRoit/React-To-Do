@@ -3,8 +3,9 @@ import React from 'react';
 const Button = (props) => {
 
     return (
-        <button 
-        />
+        <button >
+            {props.text}
+            </button>
     )
 }
 

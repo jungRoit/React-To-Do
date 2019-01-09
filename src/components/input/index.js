@@ -2,8 +2,14 @@ import React from 'react';
 
 const Input = (props) => {
 
+    let sendValue = (e) => {
+        props.changed();
+    }
     return (
-        <input />
+        <input
+        name = "input"
+        onChange = {()=> sendValue()}
+         />
     )
 }
 
