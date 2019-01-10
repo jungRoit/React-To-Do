@@ -13,15 +13,14 @@ class App extends Component {
 
   addTodo = (note) => {
     if(note.value !== ''){
-      let notes = this.state.notes.slice();
-      notes.push(note);
-      this.setState({notes});
+      this.setState({ 
+        notes: this.state.notes.concat(note)
+      })
     }
   }
 
-  deleteTodo =(todo) => {
+  deleteTodo =(index) => {
     let notes = this.state.notes.slice();
-    let index = notes.indexOf(todo);
     notes.splice(index,1);
     this.setState({notes});
   }
@@ -32,7 +31,7 @@ class App extends Component {
         <Form clicked={this.addTodo} />
         <hr />
         {this.state.notes.map((note,i)=> 
-         <Todo key={i} value={note.value} deleteHandler={this.deleteTodo} />
+         <Todo key={i} index = {i} value={note.value} isComplete={note.isComplete} deleteHandler={this.deleteTodo} />
         )}
       </div>
     );

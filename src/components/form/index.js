@@ -17,7 +17,8 @@ class Form extends React.Component {
 
 	getInputValue = () => {
 		let note = {
-			value:this.state.value
+			value:this.state.value,
+			isComplete: false 
 		}
 		this.props.clicked(note);
 		this.setState({value:''});
