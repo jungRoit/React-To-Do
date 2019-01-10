@@ -1,0 +1,8 @@
+.to-do-input {
+    background: white;
+    border: none;
+}
+
+.strike-through {
+    text-decoration: line-through;
+}
