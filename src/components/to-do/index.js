@@ -12,7 +12,7 @@ const Todo = (props) => {
 	}
 
 	let editFieldChanged = (event) => {
-		props.handleEdit(props.item.id,event.target.value);
+		props.handleEdit(props.item.id, event.target.value);
 	}
 
 	let taskcompleted = () => {
@@ -22,15 +22,15 @@ const Todo = (props) => {
 	let renderTodoValue = () => {
 		if (props.item.isEditEnabled) {
 			return (
-				<div className='todo-item'>
-				<input
-					value={props.item.value}
-					onChange = {(event)=> editFieldChanged(event)}
-				/>
-				<button
-				className = "btn-success"
-				onClick={() => edit()}>
-				Save
+				<div className='todo-item col-lg-6 h3'>
+					<input
+						value={props.item.value}
+						onChange={(event) => editFieldChanged(event)}
+					/>
+					<button
+						className="btn-success"
+						onClick={() => edit()}>
+						Save
 				</button>
 				</div>
 			)
@@ -51,12 +51,12 @@ const Todo = (props) => {
 			/>
 			{renderTodoValue()}
 			<button
-			className = "btn-warning"
+				className="btn-warning"
 				onClick={() => edit()}>
 				Edit
 				</button>
 			<button
-			className = "btn-danger"
+				className="btn-danger"
 				onClick={() => deleteTodo()}>
 				Delete
 				</button>
