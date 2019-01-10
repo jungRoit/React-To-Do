@@ -6,3 +6,7 @@
 .strike-through {
     text-decoration: line-through;
 }
+
+.to-do p {
+    display: inline-block;
+}

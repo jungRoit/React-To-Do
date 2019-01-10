@@ -1,54 +1,42 @@
 import React from 'react';
 import './index.css';
 
-class Todo extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			completed: props.isComplete
-		}
+ const Todo = (props) => {
+
+	let deleteTodo = () => {
+		props.deleteHandler(props.item);
 	}
 
-	delete = () => {
-		this.props.deleteHandler(this.props.index);
+	let edit = () => {
 	}
 
-	edit = () => {
-		this.refs.item.removeAttribute('disabled');
+	let taskcompleted = () => {
+		props.handleTaskCompleted(props.item);
 	}
 
-	taskcompleted = () => {
-		if (this.state.completed) {
-			this.setState({ completed: false });
-		} else {
-			this.setState({ completed: true });
-		}
-	}
-
-	render() {
 		return (
 			<div className='to-do'>
 				<input
 					type='checkbox'
-					onChange={this.taskcompleted}
+					onChange={() =>taskcompleted()}
 				/>
-				<p className={this.state.completed ? 'strike-through' : ''}>{this.props.value}</p>
+				<p className={props.item.isComplete ? 'strike-through' : ''}>{props.item.value}</p>
 				{/* <input
 					ref='item'
 					className={this.state.styles.join(' ')}
 					value={this.props.value} disabled
 				/> */}
 				<button
-					onClick={this.edit}>
+					onClick={()=>edit()}>
 					Edit
 				</button>
 				<button
-					onClick={this.delete}>
+					onClick={()=>deleteTodo()}>
 					Delete
 				</button>
 			</div>
 		)
-	}
+	
 }
 
 export default Todo;

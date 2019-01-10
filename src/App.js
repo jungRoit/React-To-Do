@@ -7,22 +7,34 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: []
+      todos: []
     }
   }
 
-  addTodo = (note) => {
-    if(note.value !== ''){
+  addTodo = (todo) => {
+    if(todo.value !== ''){
       this.setState({ 
-        notes: this.state.notes.concat(note)
+        todos: this.state.todos.concat(todo)
       })
     }
   }
 
-  deleteTodo =(index) => {
-    let notes = this.state.notes.slice();
-    notes.splice(index,1);
-    this.setState({notes});
+  deleteTodo =(todo) => {
+    // let todos = this.state.todos.slice();
+    // todos.splice(index,1);
+    this.setState({
+      todos:this.state.todos.filter(e => e!== todo)
+    });
+  }
+
+  toggleTaskCompleted = (todo) => {
+    let todos = this.state.todos.slice();
+    if(todo.isComplete)todo.isComplete = false;
+    else todo.isComplete = true;
+    let index = todos.indexOf(todo);
+    todos[index] = todo;
+    this.setState({todos})
+    console.log(this.state.todos);
   }
 
   render() {
@@ -30,8 +42,13 @@ class App extends Component {
       <div className="App">
         <Form clicked={this.addTodo} />
         <hr />
-        {this.state.notes.map((note,i)=> 
-         <Todo key={i} index = {i} value={note.value} isComplete={note.isComplete} deleteHandler={this.deleteTodo} />
+        {this.state.todos.map((todo,i)=> 
+         <Todo 
+         key={i}
+         item={todo}
+         deleteHandler={this.deleteTodo}  
+         handleTaskCompleted= {this.toggleTaskCompleted}
+         />
         )}
       </div>
     );
