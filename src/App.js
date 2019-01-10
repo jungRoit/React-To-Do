@@ -20,8 +20,6 @@ class App extends Component {
   }
 
   deleteTodo =(todo) => {
-    // let todos = this.state.todos.slice();
-    // todos.splice(index,1);
     this.setState({
       todos:this.state.todos.filter(e => e!== todo)
     });
@@ -34,7 +32,23 @@ class App extends Component {
     let index = todos.indexOf(todo);
     todos[index] = todo;
     this.setState({todos})
-    console.log(this.state.todos);
+  }
+
+  toggleIsEditEnabled = (todo) => {
+    let todos = this.state.todos.slice();
+    if(todo.isEditEnabled)todo.isEditEnabled = false;
+    else todo.isEditEnabled = true;
+    let index = todos.indexOf(todo);
+    todos[index] = todo;
+    this.setState({todos})
+  }
+
+  editTodo = (todo,value) => {
+    let todos = this.state.todos.slice();
+    todo.value = value;
+    let index = todos.indexOf(todo);
+    todos[index] = todo;
+    this.setState({todos})
   }
 
   render() {
@@ -48,6 +62,8 @@ class App extends Component {
          item={todo}
          deleteHandler={this.deleteTodo}  
          handleTaskCompleted= {this.toggleTaskCompleted}
+         editToggle = {this.toggleIsEditEnabled}
+         handleEdit = {this.editTodo}
          />
         )}
       </div>

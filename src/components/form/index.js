@@ -18,7 +18,8 @@ class Form extends React.Component {
 	getInputValue = () => {
 		let note = {
 			value:this.state.value,
-			isComplete: false 
+			isComplete: false,
+			isEditEnabled:false
 		}
 		this.props.clicked(note);
 		this.setState({value:''});
@@ -35,13 +36,3 @@ class Form extends React.Component {
 }
 
 export default Form;
-
-/* <Input 
-value = {this.state.value}
-changed={() => this.getValue()}
-
-/>
-<Button
-text="Save"
-clicked={()=>this.getInputValue()}
-/> */
