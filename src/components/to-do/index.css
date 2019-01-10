@@ -10,3 +10,12 @@
 .to-do p {
     display: inline-block;
 }
+
+.todo-item {
+    display: inline-block;
+}
+
+.font-large {
+    font-size: 50px;
+    font-style: normal;
+}

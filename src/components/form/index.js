@@ -17,6 +17,7 @@ class Form extends React.Component {
 
 	getInputValue = () => {
 		let note = {
+			id: new Date().toISOString(),
 			value:this.state.value,
 			isComplete: false,
 			isEditEnabled:false
@@ -27,9 +28,13 @@ class Form extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="col-lg-12 lead">
 			<input value={this.state.value} onChange={this.getValue}/>
-			<button onClick={this.getInputValue}>Save</button>
+			<button 
+			className = "btn-dark"
+			onClick={this.getInputValue}>
+			Save
+			</button>
 			</div>
 		)
 	}

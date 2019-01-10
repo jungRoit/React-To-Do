@@ -12,7 +12,7 @@ const Todo = (props) => {
 	}
 
 	let editFieldChanged = (event) => {
-		props.handleEdit(props.item,event.target.value);
+		props.handleEdit(props.item.id,event.target.value);
 	}
 
 	let taskcompleted = () => {
@@ -28,6 +28,7 @@ const Todo = (props) => {
 					onChange = {(event)=> editFieldChanged(event)}
 				/>
 				<button
+				className = "btn-success"
 				onClick={() => edit()}>
 				Save
 				</button>
@@ -35,7 +36,7 @@ const Todo = (props) => {
 			)
 		} else {
 			return (
-				<p className={props.item.isComplete ? 'strike-through' : ''}>
+				<p className={props.item.isComplete ? 'strike-through col-lg-6 font-large' : 'col-lg-6 font-large'}>
 					{props.item.value}
 				</p>
 			)
@@ -50,10 +51,12 @@ const Todo = (props) => {
 			/>
 			{renderTodoValue()}
 			<button
+			className = "btn-warning"
 				onClick={() => edit()}>
 				Edit
 				</button>
 			<button
+			className = "btn-danger"
 				onClick={() => deleteTodo()}>
 				Delete
 				</button>
