@@ -1,6 +1,6 @@
 import React from 'react';
-// import Input from '../input';
-// import Button from '../button';
+import './index.css';
+
 class Form extends React.Component {
 
 	constructor(props) {
@@ -29,7 +29,9 @@ class Form extends React.Component {
 	render() {
 		return (
 			<div className="col-lg-12 lead">
-			<input value={this.state.value} onChange={this.getValue}/>
+			<input 
+			className= "input"
+			value={this.state.value} onChange={this.getValue}/>
 			<button 
 			className = "btn-dark"
 			onClick={this.getInputValue}>

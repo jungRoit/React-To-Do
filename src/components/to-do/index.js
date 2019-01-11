@@ -28,7 +28,7 @@ const Todo = (props) => {
 						onChange={(event) => editFieldChanged(event)}
 					/>
 					<button
-						className="btn-success"
+						className="btn-success button"
 						onClick={() => edit()}>
 						Save
 				</button>
@@ -46,17 +46,18 @@ const Todo = (props) => {
 	return (
 		<div className='to-do'>
 			<input
+				className='checkbox'
 				type='checkbox'
 				onChange={() => taskcompleted()}
 			/>
 			{renderTodoValue()}
 			<button
-				className="btn-warning"
+				className="btn-warning button"
 				onClick={() => edit()}>
 				Edit
 				</button>
 			<button
-				className="btn-danger"
+				className="btn-danger button"
 				onClick={() => deleteTodo()}>
 				Delete
 				</button>

@@ -19,3 +19,12 @@
     font-size: 50px;
     font-style: normal;
 }
+
+.button {
+	margin-left: 10px;
+}
+
+.checkbox {
+	width: 30px;
+	height: 30px;
+}
