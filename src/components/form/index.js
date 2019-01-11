@@ -31,7 +31,9 @@ class Form extends React.Component {
 			<div className="col-lg-12 lead">
 			<input 
 			className= "input"
-			value={this.state.value} onChange={this.getValue}/>
+			value={this.state.value} onChange={this.getValue}
+			placeholder='Create a new To-do'
+			/>
 			<button 
 			className = "btn-dark"
 			onClick={this.getInputValue}>

@@ -19,10 +19,16 @@ const Todo = (props) => {
 		props.handleTaskCompleted(props.item);
 	}
 
-	let renderTodoValue = () => {
-		if (props.item.isEditEnabled) {
-			return (
-				<div className='todo-item col-lg-6 h3'>
+	return (
+		<div className='to-do'>
+			<input
+				className='checkbox'
+				type='checkbox'
+				onChange={() => taskcompleted()}
+			/>
+			{props.item.isEditEnabled 
+			?(
+				<div className='todo-item'>
 					<input
 						value={props.item.value}
 						onChange={(event) => editFieldChanged(event)}
@@ -34,23 +40,14 @@ const Todo = (props) => {
 				</button>
 				</div>
 			)
-		} else {
-			return (
-				<p className={props.item.isComplete ? 'strike-through col-lg-6 font-large' : 'col-lg-6 font-large'}>
+			: (
+				<div className='todo-item '>
+				<p className={props.item.isComplete ? 'strike-through font-large' : ' font-large'}>
 					{props.item.value}
 				</p>
+				</div>
 			)
-		}
-	}
-
-	return (
-		<div className='to-do'>
-			<input
-				className='checkbox'
-				type='checkbox'
-				onChange={() => taskcompleted()}
-			/>
-			{renderTodoValue()}
+			}
 			<button
 				className="btn-warning button"
 				onClick={() => edit()}>

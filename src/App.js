@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: JSON.parse(localStorage.getItem('todos'))
+      todos: JSON.parse(localStorage.getItem('todos')) || []
     }
   }
 
@@ -53,11 +53,10 @@ class App extends Component {
 
   render() {
 		localStorage.clear();
-		localStorage.setItem('todos',JSON.stringify(this.state.todos));
+		localStorage.setItem('todos',JSON.stringify(this.state.todos) || null);
     return (
       <div className="App">
         <Form clicked={this.addTodo} />
-        <hr />
         {this.state.todos.map((todo, i) =>
           <Todo
             key={i}
