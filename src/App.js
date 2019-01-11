@@ -61,7 +61,7 @@ class App extends Component {
         <Form clicked={this.addTodo} />
         {this.state.todos.map((todo, i) =>
           <Todo
-            key={i}
+            key={todo.id}
             item={todo}
             deleteHandler={this.deleteTodo}
             handleTaskCompleted={this.toggleTaskCompleted}

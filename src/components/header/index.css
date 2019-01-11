@@ -1,9 +1,9 @@
 .header {
-    background: #232221;
+    background: #B3A08D;
     padding: 20px 10px 20px 10px;
+    text-align: center;
 }
 
 .header h1 {
-    margin: auto;
     color: #F3F0F0;
 }
