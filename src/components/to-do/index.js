@@ -22,10 +22,11 @@ const Todo = (props) => {
 	return (
 		<div className='to-do'>
 			<input
-				className='checkbox'
+				className='checkbox pull-left'
 				type='checkbox'
 				onChange={() => taskcompleted()}
 			/>
+
 			{props.item.isEditEnabled 
 			?(
 				<div className='todo-item'>
@@ -49,14 +50,14 @@ const Todo = (props) => {
 			)
 			}
 			<button
-				className="btn-warning button"
+				className="btn-dark button"
 				onClick={() => edit()}>
-				Edit
+				/
 				</button>
 			<button
 				className="btn-danger button"
 				onClick={() => deleteTodo()}>
-				Delete
+				X
 				</button>
 		</div>
 	)

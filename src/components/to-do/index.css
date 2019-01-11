@@ -8,10 +8,15 @@
 }
 
 .to-do p {
+    width: 100%;
+    overflow: hidden;
+    color: #F3F0F0;
     display: inline-block;
 }
 
 .todo-item {
+    width: 75%;
+    text-align: center;
     display: inline-block;
 }
 
@@ -31,10 +36,11 @@
 .checkbox {
 	width: 20px;
     height: 20px;
-    border-radius: 50%;
 }
 
 .to-do {
+    width: 100%;
+    background: #B3A08D;
     border-top: 1px solid #D7D7D7;
     border-bottom: 1px solid #D7D7D7;
     padding: 20px;
