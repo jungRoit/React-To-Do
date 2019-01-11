@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Form from './components/form';
 import Todo from './components/to-do';
+import Header from './components/header';
 
 class App extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class App extends Component {
 		localStorage.setItem('todos',JSON.stringify(this.state.todos) || null);
     return (
       <div className="App">
+        <Header title="To-do App"/>
         <Form clicked={this.addTodo} />
         {this.state.todos.map((todo, i) =>
           <Todo
