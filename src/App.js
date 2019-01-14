@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Form from './components/form';
-import Todo from './components/to-do';
 import Header from './components/header';
+import Container from './components/container';
 
 class App extends Component {
 	constructor(props) {
@@ -43,6 +43,7 @@ class App extends Component {
 	}
 
 	deleteTodo = (todo) => {
+		console.log(todo);
 		this.setState({
 			todos: this.state.todos.filter(e => e !== todo)
 		});
@@ -71,6 +72,15 @@ class App extends Component {
 		this.setState({ todos })
 	}
 
+	toggleCheckbox = (todo) => {
+		let todos = this.state.todos.slice();
+		if(todo.isChecked)todo.isChecked = false;
+		else todo.isChecked = true;
+		let index = todos.indexOf(todo);
+		todos[index] = todo;
+		this.setState({todos});
+	}
+
 	editTodo = (id, value) => {
 		let newTodos = this.state.todos.filter((item) => {
 			if (item.id === id) item.value = value;
@@ -86,6 +96,7 @@ class App extends Component {
 					title="To-do App"
 					toggleSearch={this.toggleSearch}
 				/>
+
 				{this.state.isSearchEnabled
 					? (
 						<Form
@@ -103,16 +114,16 @@ class App extends Component {
 						/>
 					)
 				}
-				{this.state.todos.map((todo, i) =>
-					<Todo
-						key={todo.id}
-						item={todo}
-						deleteHandler={this.deleteTodo}
-						handleTaskCompleted={this.toggleTaskCompleted}
-						editToggle={this.toggleIsEditEnabled}
-						handleEdit={this.editTodo}
-					/>
-				)}
+
+				<Container 
+				todos = {this.state.isSearchEnabled? this.state.searchList : this.state.todos} 
+				deleteHandler = {this.deleteTodo}
+				toggleTaskCompleted={this.toggleTaskCompleted}
+				toggleIsEditEnabled={this.toggleIsEditEnabled}
+				toggleCheckbox = {this.toggleCheckbox}
+				editTodo={this.editTodo}
+				 />
+
 			</div>
 		);
 	}

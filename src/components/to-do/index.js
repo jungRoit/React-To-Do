@@ -25,8 +25,15 @@ const Todo = (props) => {
 		props.handleTaskCompleted(props.item);
 	}
 
+	let checkboxTick = () => {
+		props.toggleCheckbox(props.item);
+	}
+
 	return (
-		<div className='to-do'>
+		<div 
+		className='to-do'
+		onClick = {() => checkboxTick()}
+		>
 			<div className = 'todo-checkbox'>
 				<input
 					className='checkbox'

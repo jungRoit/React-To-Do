@@ -12,13 +12,13 @@ const Header = (props) => {
         <div className='header'>
             <h1>{props.title}</h1>
             <div className='clearfix'>
-                <img 
-                onClick= {() => toggleSearch()}
-                className='search-img' 
-                src={searchPic} alt='Search' />
+                <img
+                    onClick={() => toggleSearch()}
+                    className='search-img'
+                    src={searchPic} alt='Search' />
             </div>
         </div>
-        
+
     )
 }
 

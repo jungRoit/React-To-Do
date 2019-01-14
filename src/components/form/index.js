@@ -21,7 +21,8 @@ class Form extends React.Component {
 				id: new Date().toISOString(),
 				value:this.state.value,
 				isComplete: false,
-				isEditEnabled:false
+				isEditEnabled:false,
+				isChecked:false
 			}
 			this.props.clicked(note);
 			this.setState({value:''});

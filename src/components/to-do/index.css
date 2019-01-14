@@ -22,8 +22,10 @@
 }
 
 .todo-item-input {
+    background: #B3A08D;
+    color: #F3F0F0;
+    border: none;
     text-align: center;
-    padding: 5px;
     font-size: 20px;
     width: 100%;
 }
