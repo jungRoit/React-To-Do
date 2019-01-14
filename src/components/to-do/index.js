@@ -1,5 +1,7 @@
 import React from 'react';
 import './index.css';
+import editPic from '../../assets/img/edit.png';
+import deletePic from '../../assets/img/delete.png';
 
 const Todo = (props) => {
 
@@ -62,14 +64,14 @@ const Todo = (props) => {
 
 			<div className='todo-buttons'>
 				<button
-					className="btn-dark button"
+					className="edit button"
 					onClick={() => editPressed()}>
-					{props.item.isEditEnabled ? 'Back' : '/'}
+					{props.item.isEditEnabled ? 'Back' : <img src={editPic} alt='edit'/>}
 				</button>
 				<button
 					className="btn-danger button"
 					onClick={() => deleteTodo()}>
-					X
+					<img src={deletePic} alt='delete'/>
 				</button>
 			</div>
 

@@ -43,6 +43,11 @@
     border: 0;
 }
 
+.button img {
+    width: 80%;
+    height: 80%;
+}
+
 .checkbox {
 	width: 20px;
     height: 20px;
@@ -68,3 +73,8 @@
     vertical-align: middle;
     display: inline-block;
 }
+
+
+
+
+

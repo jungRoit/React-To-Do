@@ -39,9 +39,12 @@ class App extends Component {
 	}
 
 	deleteTodo = (todo) => {
-		this.setState({
-			todos: this.state.todos.filter(e => e !== todo)
-		});
+		this.state.todos.forEach(item => {
+			if(item.id === todo.id){
+				let index = this.state.todos.indexOf(todo);
+				this.state.todos.splice(index,1);
+			}
+		})
 	}
 
 	toggleSearch = () => {
