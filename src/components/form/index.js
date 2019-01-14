@@ -12,10 +12,6 @@ class Form extends React.Component {
 
 	getValue = (event) => {
 		this.setState({value:event.target.value});
-
-			
-					
-		
 	}
 
 	getInputValue = (event) => {

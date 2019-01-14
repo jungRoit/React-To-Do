@@ -7,7 +7,13 @@ const Todo = (props) => {
 		props.deleteHandler(props.item);
 	}
 
-	let edit = () => {
+	let edit = (event) => {
+		if(event.keyCode === 13){
+			props.editToggle(props.item);
+		}
+	}
+
+	let editPressed = () => {
 		props.editToggle(props.item);
 	}
 
@@ -22,7 +28,7 @@ const Todo = (props) => {
 	return (
 		<div className='to-do'>
 			<input
-				className='checkbox pull-left'
+				className='checkbox'
 				type='checkbox'
 				onChange={() => taskcompleted()}
 			/>
@@ -31,14 +37,11 @@ const Todo = (props) => {
 			?(
 				<div className='todo-item'>
 					<input
+					className = 'todo-item-input'
 						value={props.item.value}
 						onChange={(event) => editFieldChanged(event)}
+						onKeyDown = {(e)=> edit(e)}
 					/>
-					<button
-						className="btn-success button"
-						onClick={() => edit()}>
-						Save
-				</button>
 				</div>
 			)
 			: (
@@ -51,8 +54,8 @@ const Todo = (props) => {
 			}
 			<button
 				className="btn-dark button"
-				onClick={() => edit()}>
-				/
+				onClick={() => editPressed()}>
+				{props.item.isEditEnabled ? 'Back':'/' }
 				</button>
 			<button
 				className="btn-danger button"
