@@ -15,15 +15,17 @@
 }
 
 .todo-item {
-    width: 75%;
+    width: 65%;
     text-align: center;
+    vertical-align: middle;
     display: inline-block;
 }
 
 .todo-item-input {
     text-align: center;
-    padding: 10px;
-    width: 80%;
+    padding: 5px;
+    font-size: 20px;
+    width: 100%;
 }
 
 .font-large {
@@ -52,4 +54,16 @@
     border-bottom: 1px solid #D7D7D7;
     padding: 20px;
     margin-top: 20px;
+}
+
+.todo-checkbox {
+    width: 10%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.todo-buttons {
+    width: 25%;
+    vertical-align: middle;
+    display: inline-block;
 }

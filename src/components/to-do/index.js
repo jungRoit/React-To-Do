@@ -8,7 +8,7 @@ const Todo = (props) => {
 	}
 
 	let edit = (event) => {
-		if(event.keyCode === 13){
+		if (event.keyCode === 13) {
 			props.editToggle(props.item);
 		}
 	}
@@ -27,41 +27,45 @@ const Todo = (props) => {
 
 	return (
 		<div className='to-do'>
-			<input
-				className='checkbox'
-				type='checkbox'
-				onChange={() => taskcompleted()}
-			/>
+			<div className = 'todo-checkbox'>
+				<input
+					className='checkbox'
+					type='checkbox'
+					onChange={() => taskcompleted()}
+				/>
+			</div>
 
-			{props.item.isEditEnabled 
-			?(
-				<div className='todo-item'>
-					<input
-					className = 'todo-item-input'
-						value={props.item.value}
-						onChange={(event) => editFieldChanged(event)}
-						onKeyDown = {(e)=> edit(e)}
-					/>
-				</div>
-			)
-			: (
-				<div className='todo-item '>
-				<p className={props.item.isComplete ? 'strike-through font-large' : ' font-large'}>
-					{props.item.value}
-				</p>
-				</div>
-			)
-			}
-			<button
-				className="btn-dark button"
-				onClick={() => editPressed()}>
-				{props.item.isEditEnabled ? 'Back':'/' }
+			<div className='todo-item'>
+				{props.item.isEditEnabled
+					? (
+						<input
+							className='todo-item-input'
+							value={props.item.value}
+							onChange={(event) => editFieldChanged(event)}
+							onKeyDown={(e) => edit(e)}
+						/>
+					)
+					: (
+						<p className={props.item.isComplete ? 'strike-through font-large' : ' font-large'}>
+							{props.item.value}
+						</p>
+					)
+				}
+			</div>
+
+			<div className='todo-buttons'>
+				<button
+					className="btn-dark button"
+					onClick={() => editPressed()}>
+					{props.item.isEditEnabled ? 'Back' : '/'}
 				</button>
-			<button
-				className="btn-danger button"
-				onClick={() => deleteTodo()}>
-				X
+				<button
+					className="btn-danger button"
+					onClick={() => deleteTodo()}>
+					X
 				</button>
+			</div>
+
 		</div>
 	)
 
