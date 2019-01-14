@@ -33,17 +33,12 @@ class App extends Component {
 		}
 	}
 
-	search = (value) => {
-		let result = [];
-		this.state.todos.filter(item => {
-			if (item.value.includes(value)) result.push(item);
-			return result;
-		})
+	search = (val) => {
+		let result = this.state.todos.filter(item => item.value.includes(val));
 		this.setState({ searchList: result });
 	}
 
 	deleteTodo = (todo) => {
-		console.log(todo);
 		this.setState({
 			todos: this.state.todos.filter(e => e !== todo)
 		});
@@ -74,11 +69,11 @@ class App extends Component {
 
 	toggleCheckbox = (todo) => {
 		let todos = this.state.todos.slice();
-		if(todo.isChecked)todo.isChecked = false;
+		if (todo.isChecked) todo.isChecked = false;
 		else todo.isChecked = true;
 		let index = todos.indexOf(todo);
 		todos[index] = todo;
-		this.setState({todos});
+		this.setState({ todos });
 	}
 
 	editTodo = (id, value) => {
@@ -100,7 +95,7 @@ class App extends Component {
 				{this.state.isSearchEnabled
 					? (
 						<Form
-							canSearch={this.state.isSearchEnabled}
+							canSearch={true}
 							clicked={this.search}
 							placeHolder='Search a To-do'
 						/>
@@ -108,21 +103,21 @@ class App extends Component {
 					:
 					(
 						<Form
-							canSearch={this.state.isSearchEnabled}
+							canSearch={false}
 							clicked={this.addTodo}
 							placeHolder='Create a new To-do'
 						/>
 					)
 				}
 
-				<Container 
-				todos = {this.state.isSearchEnabled? this.state.searchList : this.state.todos} 
-				deleteHandler = {this.deleteTodo}
-				toggleTaskCompleted={this.toggleTaskCompleted}
-				toggleIsEditEnabled={this.toggleIsEditEnabled}
-				toggleCheckbox = {this.toggleCheckbox}
-				editTodo={this.editTodo}
-				 />
+				<Container
+					todos={this.state.isSearchEnabled ? this.state.searchList : this.state.todos}
+					deleteHandler={this.deleteTodo}
+					toggleTaskCompleted={this.toggleTaskCompleted}
+					toggleIsEditEnabled={this.toggleIsEditEnabled}
+					toggleCheckbox={this.toggleCheckbox}
+					editTodo={this.editTodo}
+				/>
 
 			</div>
 		);

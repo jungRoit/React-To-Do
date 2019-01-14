@@ -12,7 +12,7 @@ class Form extends React.Component {
 
 	getValue = (event) => {
 		this.setState({value:event.target.value});
-		if(this.props.canSearch) this.props.clicked(this.state.value);
+		if(this.props.canSearch) this.props.clicked(event.target.value);
 	}
 
 	getInputValue = (event) => {
