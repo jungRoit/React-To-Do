@@ -12,6 +12,17 @@ class App extends Component {
     }
   }
 
+  setLocalStorage() {
+    window.addEventListener('beforeunload',() => {
+      localStorage.clear();
+      localStorage.setItem('todos',JSON.stringify(this.state.todos) || null);
+    })
+  }
+
+  componentDidMount() {
+    this.setLocalStorage();
+  }
+
   addTodo = (todo) => {
     if (todo.value !== '') {
       this.setState({
@@ -53,10 +64,8 @@ class App extends Component {
   }
 
   render() {
-		localStorage.clear();
-		localStorage.setItem('todos',JSON.stringify(this.state.todos) || null);
     return (
-      <div className="App">
+      <div className="App" >
         <Header title="To-do App"/>
         <Form clicked={this.addTodo} />
         {this.state.todos.map((todo, i) =>
