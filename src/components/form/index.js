@@ -12,6 +12,7 @@ class Form extends React.Component {
 
 	getValue = (event) => {
 		this.setState({value:event.target.value});
+		if(this.props.canSearch) this.props.clicked(this.state.value);
 	}
 
 	getInputValue = (event) => {
@@ -34,7 +35,7 @@ class Form extends React.Component {
 			<input 
 			className= "input"
 			value={this.state.value} onChange={this.getValue}
-			placeholder='Create a new To-do'
+			placeholder= {this.props.placeHolder}
 			onKeyDown = {this.getInputValue}
 			/>
 			</div>
