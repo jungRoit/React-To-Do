@@ -10,7 +10,9 @@ class App extends Component {
 		this.state = {
 			todos: JSON.parse(localStorage.getItem('todos')) || [],
 			searchList: [],
-			isSearchEnabled: false
+			sortedList: [],
+			isSearchEnabled: false,
+			isSortEnabled: false
 		}
 	}
 
@@ -40,16 +42,30 @@ class App extends Component {
 
 	deleteTodo = (todo) => {
 		this.state.todos.forEach(item => {
-			if(item.id === todo.id){
+			if (item.id === todo.id) {
 				let index = this.state.todos.indexOf(todo);
-				this.state.todos.splice(index,1);
+				this.state.todos.splice(index, 1);
 			}
 		})
 	}
 
+	// Header Methods for toggle between input bar
 	toggleSearch = () => {
 		if (this.state.isSearchEnabled) this.setState({ isSearchEnabled: false });
 		else this.setState({ isSearchEnabled: true });
+	}
+
+	sortTodos = (value) => {
+		let result = [];
+		if (value === '1') {
+			result = this.state.todos.filter(item => item.isComplete === true);
+			this.setState({ sortedList: result, isSortEnabled:true });
+		}else if(value === '2') {
+			result = this.state.todos.filter(item => item.isComplete === false);
+			this.setState({ sortedList: result, isSortEnabled:true });
+		}else {
+			this.setState({isSortEnabled:false});
+		}
 	}
 
 	toggleTaskCompleted = (todo) => {
@@ -93,6 +109,7 @@ class App extends Component {
 				<Header
 					title="To-do App"
 					toggleSearch={this.toggleSearch}
+					sortTodos={this.sortTodos}
 				/>
 
 				{this.state.isSearchEnabled
@@ -114,7 +131,8 @@ class App extends Component {
 				}
 
 				<Container
-					todos={this.state.isSearchEnabled ? this.state.searchList : this.state.todos}
+					todos={this.state.isSearchEnabled ? this.state.searchList : (this.state.isSortEnabled 
+					? this.state.sortedList : this.state.todos)} 
 					deleteHandler={this.deleteTodo}
 					toggleTaskCompleted={this.toggleTaskCompleted}
 					toggleIsEditEnabled={this.toggleIsEditEnabled}
