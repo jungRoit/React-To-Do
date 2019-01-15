@@ -1,5 +1,5 @@
 .App {
-  width: 600px;
+  width: 50%;
   margin: auto;
 }
 
@@ -39,7 +39,7 @@
 
 @media screen and (max-width:768px) {
   .App {
-    width: 100%;
+    width: 80%;
   }
 }
 
