@@ -43,7 +43,6 @@ class App extends Component {
 	deleteTodo = (todo) => {
 			let result = this.state.todos.filter(item => item !== todo);
 			this.setState({todos:result});
-			console.log(result);
 	}
 
 	// Header Methods for toggle between input bar
