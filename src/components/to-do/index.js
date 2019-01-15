@@ -27,17 +27,11 @@ const Todo = (props) => {
 		props.handleTaskCompleted(props.item);
 	}
 
-	let checkboxTick = () => {
-		props.toggleCheckbox(props.item);
-	}
-
 	return (
-		<div 
-		className='to-do'
-		onClick = {() => checkboxTick()}
-		>
-			<div className = 'todo-checkbox'>
+		<div className='to-do'>
+			<div className='todo-checkbox'>
 				<input
+					checked= {props.item.isComplete}
 					className='checkbox'
 					type='checkbox'
 					onChange={() => taskcompleted()}
@@ -55,7 +49,9 @@ const Todo = (props) => {
 						/>
 					)
 					: (
-						<p className={props.item.isComplete ? 'strike-through font-large' : ' font-large'}>
+						<p
+						onClick ={() => taskcompleted()} 
+						className={props.item.isComplete ? 'strike-through font-large' : ' font-large'}>
 							{props.item.value}
 						</p>
 					)
@@ -66,12 +62,12 @@ const Todo = (props) => {
 				<button
 					className="edit button"
 					onClick={() => editPressed()}>
-					{props.item.isEditEnabled ? 'Back' : <img src={editPic} alt='edit'/>}
+					{props.item.isEditEnabled ? 'Back' : <img src={editPic} alt='edit' />}
 				</button>
 				<button
 					className="btn-danger button"
 					onClick={() => deleteTodo()}>
-					<img src={deletePic} alt='delete'/>
+					<img src={deletePic} alt='delete' />
 				</button>
 			</div>
 

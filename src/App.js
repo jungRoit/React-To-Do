@@ -41,12 +41,9 @@ class App extends Component {
 	}
 
 	deleteTodo = (todo) => {
-		this.state.todos.forEach(item => {
-			if (item.id === todo.id) {
-				let index = this.state.todos.indexOf(todo);
-				this.state.todos.splice(index, 1);
-			}
-		})
+			let result = this.state.todos.filter(item => item !== todo);
+			this.setState({todos:result});
+			console.log(result);
 	}
 
 	// Header Methods for toggle between input bar
@@ -59,7 +56,7 @@ class App extends Component {
 		let result = [];
 		if (value === '1') {
 			result = this.state.todos.filter(item => item.isComplete === true);
-			this.setState({ sortedList: result, isSortEnabled:true });
+			this.setState({  sortedList: result, isSortEnabled:true });
 		}else if(value === '2') {
 			result = this.state.todos.filter(item => item.isComplete === false);
 			this.setState({ sortedList: result, isSortEnabled:true });
@@ -86,14 +83,7 @@ class App extends Component {
 		this.setState({ todos })
 	}
 
-	toggleCheckbox = (todo) => {
-		let todos = this.state.todos.slice();
-		if (todo.isChecked) todo.isChecked = false;
-		else todo.isChecked = true;
-		let index = todos.indexOf(todo);
-		todos[index] = todo;
-		this.setState({ todos });
-	}
+
 
 	editTodo = (id, value) => {
 		let newTodos = this.state.todos.filter((item) => {
@@ -131,12 +121,11 @@ class App extends Component {
 				}
 
 				<Container
-					todos={this.state.isSearchEnabled ? this.state.searchList : (this.state.isSortEnabled 
-					? this.state.sortedList : this.state.todos)} 
+					todos= {this.state.isSearchEnabled ? this.state.searchList : (this.state.isSortEnabled 
+					? this.state.sortedList: this.state.todos)}
 					deleteHandler={this.deleteTodo}
 					toggleTaskCompleted={this.toggleTaskCompleted}
 					toggleIsEditEnabled={this.toggleIsEditEnabled}
-					toggleCheckbox={this.toggleCheckbox}
 					editTodo={this.editTodo}
 				/>
 

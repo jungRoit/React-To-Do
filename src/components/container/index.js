@@ -19,21 +19,17 @@ const Container = (props) => {
 		props.editTodo(id,value);
 	}
 
-	let toggleCheckbox = (todo) => {
-		props.toggleCheckbox(todo);
-	}
 
 	return (
 		props.todos.map((todo) =>
 			<Todo
 				key={todo.id}
 				item={todo}
-				isChecked= {() => toggleCheckbox(todo)}
 				deleteHandler={() =>deleteTodo(todo)}
 				handleTaskCompleted={() => toggleTaskCompleted(todo)}
 				editToggle={() => toggleIsEditEnabled(todo)}
 				handleEdit={(id,value) => editTodo(id,value)}
-				toggleCheckbox = {() => toggleCheckbox(todo)}
+				
 			/>
 		)
 	)
