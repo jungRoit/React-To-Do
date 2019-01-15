@@ -73,6 +73,17 @@
     vertical-align: middle;
     display: inline-block;
 }
+/* 
+@media screen and (max-width:768px) {
+    .button {
+      width: 30px;
+    }
+
+    .button img {
+        width: 100%;
+        height: 100%;
+    }
+  } */
 
 
 
