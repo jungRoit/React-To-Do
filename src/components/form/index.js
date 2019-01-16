@@ -23,10 +23,10 @@ class Form extends React.Component {
    */
   getValue = (event) => {
     this.setState({ value: event.target.value });
-    // if (this.props.canSearch) {
-    //   this.props.clicked(event.target.value);
-    // }
-    this.props.changed(event.target.value);
+    if (this.props.canSearch) {
+      this.props.clicked(event.target.value);
+    }
+    // this.props.changed(event.target.value);
   }
 
   /**

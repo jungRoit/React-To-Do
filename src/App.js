@@ -17,11 +17,9 @@ class App extends Component {
     super(props);
     this.state = {
       todos: JSON.parse(localStorage.getItem('todos')) || [],
-      searchList: [],
-      sortedList: [],
       isSearchEnabled: false,
-      isSortEnabled: false,
-      sortBy: 0
+      searchQuery: '',
+      sortBy: '0'
     };
   }
 
@@ -59,9 +57,7 @@ class App extends Component {
  * @param {string} val
  */
   search = (val) => {
-    const result = this.state.todos.filter(item => item.value.includes(val));
-
-    this.setState({ searchList: result });
+    this.setState({ searchQuery: val });
   }
 
   /**
@@ -92,35 +88,7 @@ class App extends Component {
  * @param {string} value
  */
   sortTodos = (value) => {
-    let result = [];
-
-    if (value === '1') {
-      result = this.state.todos.filter(item => item.isComplete === true);
-      this.setState({ sortBy: value, sortedList: result, isSortEnabled: true });
-    } else if (value === '2') {
-      result = this.state.todos.filter(item => item.isComplete === false);
-      this.setState({ sortBy: value, sortedList: result, isSortEnabled: true });
-    } else {
-      this.setState({ sortBy: value, isSortEnabled: false });
-    }
-  }
-
-  /**
-   * .Function to sort todos.
-   * 
-   * @param {string} value
-   */
-  sort = (value) => {
-    let result = [];
-    const isSortEnabled = value === '0' ? false : true;
-
-    if(value !== '0') {
-      const isComplete = value === '1' ? true : false;
-
-      result = this.state.todos.filter(item => item.isComplete === isComplete);
-      this.setState({ sortBy: value, sortedList: result, isSortEnabled: isSortEnabled });
-    }
-    this.setState({ sortBy: value, sortedList: result, isSortEnabled: isSortEnabled });
+    this.setState({ sortBy: value });
   }
 
   /**
@@ -136,7 +104,7 @@ class App extends Component {
 
     todos[index] = todo;
     this.setState({ todos });
-    this.sort(this.state.sortBy);
+    this.sortTodos(this.state.sortBy);
   }
 
   /**
@@ -146,7 +114,7 @@ class App extends Component {
  */
   toggleIsEditEnabled = (todo) => {
     const todos = this.state.todos.slice();
-    
+
     todo.isEditEnabled = !todo.isEditEnabled;
     const index = todos.indexOf(todo);
 
@@ -204,8 +172,10 @@ class App extends Component {
         }
 
         <Container
-          todos={this.state.isSearchEnabled ? this.state.searchList : (this.state.isSortEnabled
-            ? this.state.sortedList : this.state.todos)}
+          todos= {this.state.todos}
+          searchQuery = {this.state.searchQuery}
+          sortBy = {this.state.sortBy}
+          isSearchEnabled = {this.state.isSearchEnabled}
           deleteHandler={this.deleteTodo}
           toggleTaskCompleted={this.toggleTaskCompleted}
           toggleIsEditEnabled={this.toggleIsEditEnabled}
