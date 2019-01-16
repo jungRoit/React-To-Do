@@ -18,7 +18,7 @@ const Header = (props) => {
   /**
    * .Function to send sort value to parent.
    * 
-   * @param {*} event 
+   * @param {object} event 
    */
   const sortList = (event) => {
     props.sortTodos(event.target.value);

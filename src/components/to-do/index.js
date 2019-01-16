@@ -21,7 +21,7 @@ const Todo = (props) => {
   /**
    * .Function to call parent's function to edit todo when enter is clicked.
    * 
-   * @param {*} event 
+   * @param {object} event 
    */
   const edit = (event) => {
     if (event.keyCode === 13) {
@@ -39,7 +39,7 @@ const Todo = (props) => {
   /**
    * .Function to call parent's function to edit todo.
    * 
-   * @param {*} event 
+   * @param {object} event 
    */
   const editFieldChanged = (event) => {
     props.handleEdit(props.item.id, event.target.value);

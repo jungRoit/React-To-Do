@@ -22,30 +22,28 @@ class App extends Component {
       isSearchEnabled: false,
       isSortEnabled: false,
       sortBy: 0
-    }
+    };
   }
 
   /**
 	 * .Store todo item in local storage.
 	 */
   setLocalStorage = () => {
-    window.addEventListener('beforeunload', () => {
-      localStorage.clear();
-      localStorage.setItem('todos', JSON.stringify(this.state.todos) || null);
-    });
+    localStorage.clear();
+    localStorage.setItem('todos', JSON.stringify(this.state.todos) || null);
   }
 
   /**
 	 * 
 	 */
   componentDidMount() {
-    this.setLocalStorage();
+    window.addEventListener('beforeunload', this.setLocalStorage);
   }
 
   /**
 	 * .Function to add new todo item.
    * 
-   * @param {*} todo
+   * @param {object} todo
 	 */
   addTodo = (todo) => {
     if (todo.value !== '') {
@@ -58,7 +56,7 @@ class App extends Component {
   /**
  * .Function to search todo item.
  * 
- * @param {*} val
+ * @param {string} val
  */
   search = (val) => {
     const result = this.state.todos.filter(item => item.value.includes(val));
@@ -69,7 +67,7 @@ class App extends Component {
   /**
  * .Function to delete todo item.
  * 
- * @param {*} todo
+ * @param {object} todo
  */
   deleteTodo = (todo) => {
     const result = this.state.todos.filter(item => item !== todo);
@@ -91,7 +89,7 @@ class App extends Component {
   /**
  * .function to sort todoList.
  * 
- * @param {*} value
+ * @param {string} value
  */
   sortTodos = (value) => {
     let result = [];
@@ -110,7 +108,7 @@ class App extends Component {
   /**
    * .Function to sort todos.
    * 
-   * @param {*} value
+   * @param {string} value
    */
   sort = (value) => {
     let result = [];
@@ -128,16 +126,12 @@ class App extends Component {
   /**
  * .Function to toggle isComplete variable of todo item.
  * 
- * @param {*} todo
+ * @param {object} todo
  */
   toggleTaskCompleted = (todo) => {
     const todos = this.state.todos.slice();
 
-    if (todo.isComplete) {
-      todo.isComplete = false;
-    } else {
-      todo.isComplete = true;
-    }
+    todo.isComplete = !todo.isComplete;
     const index = todos.indexOf(todo);
 
     todos[index] = todo;
@@ -148,16 +142,12 @@ class App extends Component {
   /**
  * Function to toggle isEditEnabled to toggle between paragraph and input.
  * 
- * @param {*} todo
+ * @param {object} todo
  */
   toggleIsEditEnabled = (todo) => {
     const todos = this.state.todos.slice();
-
-    if (todo.isEditEnabled) {
-      todo.isEditEnabled = false;
-    } else {
-      todo.isEditEnabled = true;
-    }
+    
+    todo.isEditEnabled = !todo.isEditEnabled;
     const index = todos.indexOf(todo);
 
     todos[index] = todo;
@@ -167,9 +157,9 @@ class App extends Component {
   /**
  * .Function to edit todo item.
  * 
- * @param {*} id
+ * @param {string} id
  * 
- * @param {*} value
+ * @param {string} value
  */
   editTodo = (id, value) => {
     const newTodos = this.state.todos.filter((item) => {

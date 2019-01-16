@@ -19,19 +19,20 @@ class Form extends React.Component {
   /**
    * .Function to set value of input field when changed to state.
    * 
-   * @param {*} event
+   * @param {object} event
    */
   getValue = (event) => {
     this.setState({ value: event.target.value });
-    if (this.props.canSearch) {
-      this.props.clicked(event.target.value);
-    }
+    // if (this.props.canSearch) {
+    //   this.props.clicked(event.target.value);
+    // }
+    this.props.changed(event.target.value);
   }
 
   /**
    * .Function to send todo object to parent.
    * 
-   * @param {*} event
+   * @param {object} event
    */
   getInputValue = (event) => {
     if (event.keyCode === 13) {
