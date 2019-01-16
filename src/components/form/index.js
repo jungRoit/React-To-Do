@@ -5,10 +5,10 @@ import './index.css';
  * .Form Component to create an input.
  */
 class Form extends React.Component {
-/**
- * 
- * @param {*} props 
- */
+  /**
+   * 
+   * @param {*} props 
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -23,10 +23,10 @@ class Form extends React.Component {
    */
   getValue = (event) => {
     this.setState({ value: event.target.value });
-    if (this.props.canSearch) {
-      this.props.clicked(event.target.value);
-    }
-    // this.props.changed(event.target.value);
+    // if (this.props.canSearch) {
+    //   this.props.clicked(event.target.value);
+    // }
+    this.props.changed(event.target.value);
   }
 
   /**
@@ -36,15 +36,8 @@ class Form extends React.Component {
    */
   getInputValue = (event) => {
     if (event.keyCode === 13) {
-      const note = {
-        id: new Date().toISOString(),
-        value: this.state.value,
-        isComplete: false,
-        isEditEnabled: false,
-        isChecked: false
-      };
+      this.props.enterPressed(event.target.value);
 
-      this.props.clicked(note);
       this.setState({ value: '' });
     }
 
@@ -58,8 +51,9 @@ class Form extends React.Component {
       <div className="form">
         <input
           className="input"
-          value={this.state.value} onChange={this.getValue}
-          placeholder={this.props.placeHolder}
+          value={this.state.value}
+          onChange={this.getValue}
+          placeholder={this.props.placeholder}
           onKeyDown={this.getInputValue}
         />
       </div>

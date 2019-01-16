@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Form from './components/form';
+import AddTodo from './components/addTodo';
+import Search from './components/search';
 import Header from './components/header';
 import Container from './components/container';
 
@@ -52,7 +53,7 @@ class App extends Component {
   }
 
   /**
- * .Function to search todo item.
+ * Function to set searchQuery value.
  * 
  * @param {string} val
  */
@@ -61,7 +62,7 @@ class App extends Component {
   }
 
   /**
- * .Function to delete todo item.
+ * Function to delete todo item.
  * 
  * @param {object} todo
  */
@@ -83,7 +84,7 @@ class App extends Component {
   }
 
   /**
- * .function to sort todoList.
+ * Function to sort todoList.
  * 
  * @param {string} value
  */
@@ -92,7 +93,7 @@ class App extends Component {
   }
 
   /**
- * .Function to toggle isComplete variable of todo item.
+ * Function to toggle isComplete variable of todo item.
  * 
  * @param {object} todo
  */
@@ -123,7 +124,7 @@ class App extends Component {
   }
 
   /**
- * .Function to edit todo item.
+ * Function to edit todo item.
  * 
  * @param {string} id
  * 
@@ -142,7 +143,7 @@ class App extends Component {
   }
 
   /**
- * .Function to render jsx.
+ * Function to render jsx.
  */
   render() {
     return (
@@ -155,18 +156,16 @@ class App extends Component {
 
         {this.state.isSearchEnabled
           ? (
-            <Form
-              canSearch={true}
-              clicked={this.search}
-              placeHolder='Search a To-do'
+            <Search
+              searchData={this.search}
+              placeholder='Search a To-do'
             />
           )
           :
           (
-            <Form
-              canSearch={false}
-              clicked={this.addTodo}
-              placeHolder='Create a new To-do'
+            <AddTodo
+              addTodo = {this.addTodo}
+              placeholder='Create a new To-do'
             />
           )
         }
