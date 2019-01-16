@@ -20,7 +20,8 @@ class App extends Component {
       searchList: [],
       sortedList: [],
       isSearchEnabled: false,
-      isSortEnabled: false
+      isSortEnabled: false,
+      sortBy: 0
     }
   }
 
@@ -97,13 +98,31 @@ class App extends Component {
 
     if (value === '1') {
       result = this.state.todos.filter(item => item.isComplete === true);
-      this.setState({ sortedList: result, isSortEnabled: true });
+      this.setState({ sortBy: value, sortedList: result, isSortEnabled: true });
     } else if (value === '2') {
       result = this.state.todos.filter(item => item.isComplete === false);
-      this.setState({ sortedList: result, isSortEnabled: true });
+      this.setState({ sortBy: value, sortedList: result, isSortEnabled: true });
     } else {
-      this.setState({ isSortEnabled: false });
+      this.setState({ sortBy: value, isSortEnabled: false });
     }
+  }
+
+  /**
+   * .Function to sort todos.
+   * 
+   * @param {*} value
+   */
+  sort = (value) => {
+    let result = [];
+    const isSortEnabled = value === '0' ? false : true;
+
+    if(value !== '0') {
+      const isComplete = value === '1' ? true : false;
+
+      result = this.state.todos.filter(item => item.isComplete === isComplete);
+      this.setState({ sortBy: value, sortedList: result, isSortEnabled: isSortEnabled });
+    }
+    this.setState({ sortBy: value, sortedList: result, isSortEnabled: isSortEnabled });
   }
 
   /**
@@ -122,7 +141,8 @@ class App extends Component {
     const index = todos.indexOf(todo);
 
     todos[index] = todo;
-    this.setState({ todos })
+    this.setState({ todos });
+    this.sort(this.state.sortBy);
   }
 
   /**
