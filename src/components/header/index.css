@@ -1,0 +1,16 @@
+.header {
+    background: #B3A08D;
+    padding: 20px 10px 20px 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    color: #F3F0F0;
+}
+
+.search-img {
+    width: 40px;
+    height: 40px;
+    float: right;
+}
