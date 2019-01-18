@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   /**
-   * Function to get localstorage data and return empty array if null
+   * Function to get localstorage data and return empty array if null.
    */
   getTodosArray = () =>{
     return JSON.parse(localStorage.getItem('todos')) || [];
