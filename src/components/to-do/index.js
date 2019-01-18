@@ -85,7 +85,7 @@ const Todo = (props) => {
 
       <div className='todo-buttons'>
         <button
-          className="edit button"
+          className="btn-dark button"
           onClick={() => editPressed()}>
           {props.item.isEditEnabled ? 'Back' : <img src={editPic} alt='edit' />}
         </button>

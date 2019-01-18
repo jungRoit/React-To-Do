@@ -17,11 +17,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: JSON.parse(localStorage.getItem('todos')) || [],
+      todos: this.getTodosArray(),
       isSearchEnabled: false,
       searchQuery: '',
       sortBy: '0'
     };
+  }
+
+  /**
+   * Function to get localstorage data and return empty array if null
+   */
+  getTodosArray = () =>{
+    return JSON.parse(localStorage.getItem('todos')) || [];
   }
 
   /**
