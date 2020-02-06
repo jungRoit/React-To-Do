@@ -1,6 +1,6 @@
 .header {
     background: #B3A08D;
-    padding: 20px 10px 20px 10px;
+    padding: 20px 10px 0px 10px;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -9,8 +9,28 @@
     color: #F3F0F0;
 }
 
+.search-box {
+    float: right;
+    vertical-align: middle;
+}
+
 .search-img {
     width: 40px;
     height: 40px;
-    float: right;
 }
+
+.sort-box {
+    color: #F3F0F0;
+    float: left;
+    vertical-align: middle;
+}
+
+.sort-box label {
+    padding: 5px;
+}
+
+.sort-items  {
+    padding: 5px;
+   font-size: 14px;
+}
+
